@@ -94,7 +94,8 @@ p{margin:.5rem 0 0; color:var(--muted); line-height:1.7}
 /* CTA band with rounded top */
 .cta-band{
 	background:linear-gradient(180deg, #1e293b, #0f1728);
-	color:#fff; border-top-left-radius:36px; border-top-right-radius:36px;
+	color: var(--text);
+	border-top-left-radius:36px; border-top-right-radius:36px;
 	margin-top:40px; padding:56px 0 72px;
 }
 .cta-band .container{display:flex; flex-direction:column; align-items:center; gap:18px; text-align:center}
@@ -102,7 +103,7 @@ p{margin:.5rem 0 0; color:var(--muted); line-height:1.7}
 .cta-band .btn{
 	display:inline-flex; align-items:center; justify-content:center;
 	padding:12px 20px; border-radius:999px; font-weight:700; text-decoration:none;
-	background:linear-gradient(135deg, var(--blue), #56ccf2); color:#061a33;
+	background:linear-gradient(135deg, var(--blue), #56ccf2);
 	box-shadow:0 10px 24px rgba(47,128,237,.35);
 	border:1px solid transparent;
 }
@@ -155,10 +156,10 @@ p{margin:.5rem 0 0; color:var(--muted); line-height:1.7}
 	display:grid; place-items:center;
 	background:
 		linear-gradient(135deg, #ffffff, #eef4ff 60%),
-		radial-gradient(80% 80% at 20% 0%, rgba(47,128,237,.18), transparent 60%),
-		radial-gradient(80% 80% at 100% 100%, rgba(30,64,175,.16), transparent 60%);
+		radial-gradient(80% 80% at 20% 0%, rgba(247, 248, 249, 0.813), transparent 60%),
+		radial-gradient(80% 80% at 100% 100%, rgba(213, 214, 215, 0.16), transparent 60%);
 	border:1px solid var(--card-border);
-	box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+	box-shadow: inset 0 1px 0 rgba(134, 94, 94, 0.6);
 	color:#0f1728;
 }
 
@@ -205,26 +206,68 @@ p{margin:.5rem 0 0; color:var(--muted); line-height:1.7}
   opacity:.85;
 }
 
-/* Stack vertically on small screens and flip connectors */
-@media (max-width: 900px){
-  .process-rail{
-    grid-template-columns: 1fr;
-    gap:14px;
-  }
-  .process-step{
-    text-align:left; padding:16px;
-  }
-  .process-step .icon-badge{ margin:0 0 6px 0 }
-  .process-step:not(:last-child)::after{
-    top:auto; bottom:-16px; left:50%; right:auto;
-    transform:translateX(-50%);
-    width:2px; height:16px;
-  }
-  .process-step:not(:last-child)::before{
-    top:auto; bottom:-22px; left:50%; right:auto;
-    transform:translateX(-50%);
-    border-left:6px solid transparent;
-    border-right:6px solid transparent;
-    border-top:8px solid var(--blue);
-  }
+/* Responsive grid for services and cards */
+@media (max-width: 1200px) {
+  .container { max-width: 98vw; }
+  .services-grid { gap: 18px; }
+}
+
+@media (max-width: 900px) {
+  .container { padding: 0 10px; }
+  .services-grid { grid-template-columns: 1fr; gap: 14px; }
+  .card, .why-card { padding: 22px 12px; }
+  .card .icon, .service-icon { width: 48px; height: 48px; }
+  .process-rail { grid-template-columns: 1fr; gap: 10px; }
+  .why-grid { grid-template-columns: 1fr; gap: 14px; }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 54px 8px 60px; }
+  .section, .section.light { padding: 32px 0; }
+  .card, .why-card { padding: 16px 8px; font-size: 0.98rem; }
+  .card h3, .why-card h3 { font-size: 1.1rem; }
+  .service-icon { width: 38px; height: 38px; margin-bottom: 8px; }
+  .process-step { padding: 10px 8px; font-size: 0.95rem; }
+  .cta-band { padding: 32px 0 40px; border-top-left-radius: 22px; border-top-right-radius: 22px; }
+  .cta-band h2 { font-size: 1.3rem; }
+  .cta-band .btn { padding: 8px 14px; font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 4px; }
+  .hero { padding: 32px 4px 32px; }
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  .section, .section.light { padding: 18px 0; }
+  .card, .why-card { padding: 8px 4px; font-size: 0.92rem; }
+  .card h3, .why-card h3 { font-size: 1rem; }
+  .service-icon { width: 28px; height: 28px; margin-bottom: 4px; }
+  .process-step { padding: 6px 4px; font-size: 0.9rem; }
+  .cta-band { padding: 18px 0 24px; border-top-left-radius: 12px; border-top-right-radius: 12px; }
+  .cta-band h2 { font-size: 1rem; }
+  .cta-band .btn { padding: 6px 10px; font-size: 0.95rem; }
+}
+
+/* Scalable images/icons */
+img, svg, .service-icon, .icon-badge {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Font scaling */
+html { font-size: 16px; }
+@media (max-width: 768px) { html { font-size: 15px; } }
+@media (max-width: 480px) { html { font-size: 14px; } }
+
+/* Card wrapping for all grids */
+.services-grid, .why-grid {
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+}
+
+/* Ensure cards and sections stack/wrap properly */
+.card, .why-card, .process-step {
+  min-width: 0;
+  word-break: break-word;
 }

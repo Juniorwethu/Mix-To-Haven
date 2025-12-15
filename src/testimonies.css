@@ -1,0 +1,66 @@
+/* ========================================
+   TESTIMONIES PAGE STYLES
+   ======================================== */
+
+.testimonies-root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-gradient-light);
+}
+
+.testimonies-hero {
+  display: grid;
+  place-items: center;
+  min-height: 60vh;
+  background: var(--bg-gradient-horizontal);
+}
+
+.testimonies-hero-title {
+  color: var(--text-dark);
+}
+
+.testimonies-hero-subtitle {
+  color: var(--text-muted);
+}
+
+.testimonies-section {
+  background: var(--bg-gradient-horizontal);
+}
+
+.testimonies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.testimonies-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-lg);
+  padding: 22px 18px 18px;
+  color: var(--text-black);
+}
+
+.testimonies-quote-icon {
+  color: var(--accent-blue-light);
+  margin-bottom: 10px;
+}
+
+.testimonies-text {
+  margin-bottom: 18px;
+}
+
+.testimonies-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.testimonies-stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--accent-orange);
+}

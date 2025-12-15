@@ -13,20 +13,21 @@ import {
   SidebarMenuItem,
 } from "./ui/sidebar";
 import { FiHome, FiBox, FiDollarSign, FiStar, FiPhone } from "react-icons/fi";
+import "./app-sidebar.css";
 
 const items = [
   { title: "Home", to: "/about", icon: FiHome },
   { title: "Services", to: "/services", icon: FiBox },
   { title: "Prices", to: "/prices", icon: FiDollarSign },
-  { title: "Testimonies", to: "/testimonies", icon: FiStar },
-  { title: "Contact", to: "/contact", icon: FiPhone },
+  { title: "Testimonials", to: "/testimonies", icon: FiStar },
+  { title: "Contact Us", to: "/contact", icon: FiPhone },
 ];
 
 export const AppSidebar: React.FC = () => {
   const { pathname } = useLocation();
 
   return (
-    <Sidebar collapsible="icon" side="left">
+    <Sidebar collapsible="icon" side="left" data-testid="sidebar">
       <SidebarHeader>
         <div className="brand">
           <span className="brand-mark">🎵</span>
@@ -35,7 +36,7 @@ export const AppSidebar: React.FC = () => {
       </SidebarHeader>
 
       {/* Divider for visual separation */}
-      <div style={{ height: "1px", background: "var(--sidebar-border)", margin: "0 18px" }} />
+      <div className="sidebar-divider" />
 
       <SidebarContent>
         <SidebarGroup>

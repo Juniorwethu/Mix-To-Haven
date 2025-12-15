@@ -1,6 +1,6 @@
 import React from "react";
 import "./about us.css";
-import styled from "styled-components";
+import "./services.css";
 import {
   TbGlassFull,
   TbLeaf,
@@ -10,7 +10,7 @@ import {
   TbMessage2,
   TbListCheck,
   TbPalette,
-  TbBoom, // fix: replaces TbBoom
+  TbBoom,
   TbGlassCocktail,
   TbGlassOff,
   TbGlassGin,
@@ -29,87 +29,26 @@ import {
   TbWallet
 } from "react-icons/tb";
 
-// Elegant shadcn-like cards with palette variables
-const ServiceCard = styled.article`
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  align-items: start;
-  gap: 16px;
-  padding: 24px 24px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, var(--card-from, #ffffff), var(--card-to, #f5f8ff));
-  border: 1px solid var(--card-border, rgba(47,128,237,.18));
-  box-shadow: 0 10px 28px var(--card-shadow, rgba(30,64,175,.10));
-  transition: transform .25s ease, box-shadow .3s ease, border-color .3s ease;
-  will-change: transform, box-shadow;
-  &:hover { transform: translateY(-6px); box-shadow: 0 16px 40px var(--card-shadow-hover, rgba(30,64,175,.16)); }
-`;
-const EventCard = styled(ServiceCard)`
-  grid-template-columns: 44px 1fr;
-  padding: 18px 20px;
-  border-radius: 18px;
-`;
-
-// Palettes for nice, soft color variety
-const palettes = [
-  { from: "#ffffff", to: "#eef4ff", border: "rgba(30,64,175,.22)", shadow: "rgba(30,64,175,.10)", hover: "rgba(30,64,175,.16)" }, // blue
-  { from: "#fff7ed", to: "#ffedd5", border: "rgba(234,88,12,.22)", shadow: "rgba(234,88,12,.10)", hover: "rgba(234,88,12,.16)" },  // orange
-  { from: "#fefce8", to: "#fef3c7", border: "rgba(245,158,11,.22)", shadow: "rgba(245,158,11,.10)", hover: "rgba(245,158,11,.16)" }, // amber
-  { from: "#ecfdf5", to: "#d1fae5", border: "rgba(16,185,129,.22)", shadow: "rgba(16,185,129,.10)", hover: "rgba(16,185,129,.16)" },  // emerald
-  { from: "#ecfeff", to: "#cffafe", border: "rgba(14,165,233,.22)", shadow: "rgba(14,165,233,.10)", hover: "rgba(14,165,233,.16)" },  // sky
-  { from: "#fdf2f8", to: "#fce7f3", border: "rgba(236,72,153,.22)", shadow: "rgba(236,72,153,.10)", hover: "rgba(236,72,153,.16)" }, // pink
-];
-
-const eventPalettes = [
-  { from: "#ffffff", to: "#eef4ff", border: "rgba(30,64,175,.22)", shadow: "rgba(30,64,175,.10)", hover: "rgba(30,64,175,.16)" },
-  { from: "#fefce8", to: "#fef3c7", border: "rgba(245,158,11,.22)", shadow: "rgba(245,158,11,.10)", hover: "rgba(245,158,11,.16)" },
-  { from: "#ecfdf5", to: "#d1fae5", border: "rgba(16,185,129,.22)", shadow: "rgba(16,185,129,.10)", hover: "rgba(16,185,129,.16)" },
-  { from: "#fdf2f8", to: "#fce7f3", border: "rgba(236,72,153,.22)", shadow: "rgba(236,72,153,.10)", hover: "rgba(236,72,153,.16)" },
-  { from: "#fff7ed", to: "#ffedd5", border: "rgba(234,88,12,.22)", shadow: "rgba(234,88,12,.10)", hover: "rgba(234,88,12,.16)" },
-  { from: "#ecfeff", to: "#cffafe", border: "rgba(14,165,233,.22)", shadow: "rgba(14,165,233,.10)", hover: "rgba(14,165,233,.16)" },
-  { from: "#f3e8ff", to: "#ede9fe", border: "rgba(139,92,246,.22)", shadow: "rgba(139,92,246,.10)", hover: "rgba(139,92,246,.16)" },
-  { from: "#f1f5f9", to: "#e2e8f0", border: "rgba(15,23,42,.12)", shadow: "rgba(15,23,42,.08)", hover: "rgba(15,23,42,.12)" },
-];
-
-// Helper to convert palette to CSS vars
-const cssVars = (p: {from:string; to:string; border:string; shadow:string; hover:string}) =>
-  ({
-    ["--card-from" as any]: p.from,
-    ["--card-to" as any]: p.to,
-    ["--card-border" as any]: p.border,
-    ["--card-shadow" as any]: p.shadow,
-    ["--card-shadow-hover" as any]: p.hover,
-  } as React.CSSProperties);
-
 const Services: React.FC = () => {
   return (
-    <div className="about-root" style={{ minHeight: "100vh" }}>
-      <section
-        className="hero"
-        style={{
-          display: "grid",
-          placeItems: "center",
-          minHeight: "40vh", // a bit shorter than About
-          padding: "48px 20px",
-          
-        }}
-      >
-        <div className="container" style={{ textAlign: "center" }}>
-          <h1>Our Services</h1>
-              <p>Crafted to elevate every event.</p>
+    <div className="services-root">
+      <section className="services-hero">
+        <div className="container services-hero-container">
+          <h1 className="services-hero-title">Our Services</h1>
+          <p className="services-hero-subtitle">Crafted to elevate every event.</p>
         </div>
-        <svg className="hero-curve" viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true" style={{ display: "block", width: "100%", height: 64 }}>
+        <svg className="hero-curve services-hero-curve" viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0,120 C300,220 1140,0 1440,90 L1440,180 L0,180 Z" fill="white" />
         </svg>
       </section>
 
       {/* Our Process */}
-      <section className="section light">
+      <section className="section light services-section">
         <div className="container">
-          <h2>Our Process</h2>
+          <h2 className="services-section-title">Our Process</h2>
 
           {/* arrow graph */}
-          <div className="process-rail">
+          <div className="services-process-rail">
             <div className="process-step">
               <div className="icon-badge sm">
                 <TbMessage2 size={18} strokeWidth={1.25} aria-hidden="true" />
@@ -153,11 +92,44 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Events We Cater For */}
-      <section className="section">
+      {/* Image Gallery Section */}
+      <section className="section services-gallery-section">
         <div className="container">
-          <h2>Events We Cater For</h2>
-          <div className="services-grid" style={{ marginTop: 16 }}>
+          <div className="services-gallery-grid">
+            <img
+              src="/bar.4.jpg"
+              alt="Stylish mobile bar setup"
+              className="services-gallery-img-rect"
+            />
+            <img
+              src="/drink.4.jpg"
+              alt="A vibrant cocktail"
+              className="services-gallery-img-circle"
+            />
+            <img
+              src="/Bar.2.jpeg"
+              alt="Mix to Haven bar"
+              className="services-gallery-img-rect"
+            />
+            <img
+              src="/drink.5.jpg"
+              alt="A refreshing drink"
+              className="services-gallery-img-circle"
+            />
+            <img
+              src="/drinks.3.jpg"
+              alt="A classic cocktail"
+              className="services-gallery-img-rect"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Events We Cater For */}
+      <section className="section services-gallery-section">
+        <div className="container">
+          <h2 className="services-section-title">Events We Cater For</h2>
+          <div className="services-events-grid">
             { [
               {
                 title: "Weddings",
@@ -207,8 +179,8 @@ const Services: React.FC = () => {
                 desc:
                   "Flexible, stylish bar builds perfect for markets, rooftops, and temporary venues.",
               },
-            ].map(({ title, Icon, desc }, i) => (
-              <EventCard key={title} style={{ gridColumn: "span 6", ...cssVars(eventPalettes[i % eventPalettes.length]) }}>
+            ].map(({ title, Icon, desc }) => (
+              <div key={title} className="services-event-card">
                 <div className="icon-badge">
                   <Icon size={18} strokeWidth={1.25} aria-hidden="true" />
                 </div>
@@ -216,19 +188,36 @@ const Services: React.FC = () => {
                   <h3>{title}</h3>
                   <p>{desc}</p>
                 </div>
-              </EventCard>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* What We Offer */}
-      <section className="section">
+      {/* Two Circle Images */}
+      <section className="section services-images-section">
         <div className="container">
-          <h2>What We Offer</h2>
+          <div className="services-images-flex">
+            <img
+              src="/drinks.3.jpg"
+              alt="A refreshing beverage"
+              className="services-gallery-img-circle"
+            />
+            <img
+              src="/drinks.2.jpg"
+              alt="Another fine drink"
+              className="services-gallery-img-circle"
+            />
+          </div>
+        </div>
+      </section>
 
-          {/* modern row layout with thin, elegant icons */}
-          <div style={{ display: "grid", gap: 18, marginTop: 16 }}>
+
+      {/* What We Offer */}
+      <section className="section services-gallery-section">
+        <div className="container">
+          <h2 className="services-section-title">What We Offer</h2>
+          <div className="services-offerings-grid">
             { [
               {
                 title: "Drinks Bar",
@@ -310,29 +299,46 @@ const Services: React.FC = () => {
                 desc:
                   "End‑to‑end service including stock, logistics, setup, and breakdown—so you can relax and enjoy.",
               },
-            ].map(({ title, Icon, desc }, i) => {
-              const p = palettes[i % palettes.length];
+            ].map(({ title, Icon, desc }) => {
               return (
-                <ServiceCard key={title} style={cssVars(p)}>
-                  <div className="icon-badge lg" style={{ margin: 0 }}>
+                <div key={title} className="services-offering-card">
+                  <div className="icon-badge lg">
                     <Icon size={28} strokeWidth={1.25} aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 style={{ marginTop: 2 }}>{title}</h3>
-                    <p style={{ marginTop: 6 }}>{desc}</p>
+                    <h3>{title}</h3>
+                    <p>{desc}</p>
                   </div>
-                </ServiceCard>
+                </div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us – compact pills, different to About */}
-      <section className="section light">
+      {/* Two Square Images */}
+      <section className="section services-images-section">
         <div className="container">
-          <h2>Why Choose Us</h2>
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 16 }}>
+          <div className="services-gallery-grid">
+            <img
+              src="/drink.4.jpg"
+              alt="Bar service detail"
+              className="services-gallery-img-rect"
+            />
+            <img
+              src="/drinks.2.jpg"
+              alt="Cocktail preparation"
+              className="services-gallery-img-rect"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us – compact pills, different to About */}
+      <section className="section light services-gallery-section">
+        <div className="container">
+          <h2 className="services-section-title">Why Choose Us</h2>
+          <div className="services-why-grid">
             { [
               {
                 title: "Personalised Setups",
@@ -352,27 +358,14 @@ const Services: React.FC = () => {
             ].map(({ title, Icon, text }) => (
               <article
                 key={title}
-                className="float"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "44px 1fr",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "16px 18px",
-                  borderRadius: 18,
-                  background: "linear-gradient(180deg,#ffffff,#f5f8ff)",
-                  border: "1px solid rgba(47,128,237,.18)",
-                  boxShadow: "0 10px 28px rgba(30,64,175,.10)",
-                  minWidth: 280,
-                  flex: "1 1 320px",
-                }}
+                className="services-why-card"
               >
                 <div className="icon-badge">
                   <Icon size={18} strokeWidth={1.25} aria-hidden="true" />
                 </div>
                 <div>
                   <strong>{title}</strong>
-                  <p style={{ margin: 4 }}>{text}</p>
+                  <p>{text}</p>
                 </div>
               </article>
             ))}
@@ -381,18 +374,17 @@ const Services: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="cta-band">
-        <div className="container">
-          <h2>Ready to chat about your event?</h2>
-          <p style={{ margin: 0, opacity: 0.9 }}>
+      <section className="cta-band services-gallery-section">
+        <div className="container services-cta-container">
+          <h2 className="services-section-title">Ready to chat about your event?</h2>
+          <p className="services-cta-text">
             Contact us to book our bespoke mobile bar services—weddings, corporate functions, or private parties.
           </p>
           <a
-            className="btn"
+            className="btn services-cta-btn"
             href="https://wa.me/27787983991"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ marginTop: 10 }}
           >
             Get in Touch
           </a>

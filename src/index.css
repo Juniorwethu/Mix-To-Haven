@@ -1,3 +1,30 @@
+/* ============================================
+   MIXTOHAVEN GLOBAL STYLES
+   Import Hub for All Component Styles
+   ============================================ */
+
+/* Design System - CSS Variables */
+@import './styles/variables.css';
+
+/* Layout Systems */
+@import './sidebar.css';
+
+/* Component Styles */
+@import './components/app-sidebar.css';
+
+/* Page Styles */
+@import './landing page.css';
+@import './about-us.css';
+@import './services.css';
+@import './testimonies.css';
+@import './contact.css';
+@import './prices.css';
+@import './App.css';
+
+/* ============================================
+   Global Base Styles
+   ============================================ */
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -24,10 +51,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding: 0;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {

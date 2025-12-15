@@ -1,8 +1,9 @@
 import React from "react";
 import "./about us.css";
+import "./testimonies.css";
 import { TbQuote, TbStarFilled, TbStar } from "react-icons/tb";
 
-const Testimonies: React.FC = () => {
+const Testimonials: React.FC = () => {
   const testimonials = [
     {
       name: "Sipho Ndlovu",
@@ -40,32 +41,50 @@ const Testimonies: React.FC = () => {
         "The cocktail bar was a highlight of our celebration. The mixologists were not only skilled but also so charismatic. Every drink was a work of art.",
       rating: 5,
     },
+    {
+      name: "Lindiwe Dlamini",
+      text:
+        "They nailed everything — from the bespoke cocktail menu to flawless service. Our guests were genuinely impressed and kept asking who organised the bar.",
+      rating: 5,
+    },
+    {
+      name: "Ruan van der Merwe",
+      text:
+        "Professional, punctual and the gin cocktails were spot-on. The team made our birthday function effortless and memorable.",
+      rating: 5,
+    },
+    {
+      name: "Thabo Mokoena",
+      text:
+        "Great value and superb execution for our community event. Friendly team who worked well with our schedule and guests loved the drinks.",
+      rating: 4,
+    },
   ];
 
   return (
-    <div className="about-root" style={{ minHeight: "100vh" }}>
-      <section className="hero" style={{ display: "grid", placeItems: "center", minHeight: "60vh" }}>
+    <div className="testimonies-root">
+      <section className="hero testimonies-hero">
         <div className="container">
-          <h1>What Our Clients Say</h1>
-          <p>Real feedback from unforgettable events.</p>
+          <h1 className="testimonies-hero-title">What Our Clients Say</h1>
+          <p className="testimonies-hero-subtitle">Real feedback from unforgettable events.</p>
         </div>
         <svg className="hero-curve" viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0,120 C300,220 1140,0 1440,90 L1440,180 L0,180 Z" fill="white" />
         </svg>
       </section>
 
-      <section className="section">
+      <section className="section testimonies-section">
         <div className="container">
-          <div className="services-grid">
+          <div className="services-grid testimonies-grid">
             {testimonials.map((t) => (
-              <article key={t.name} className="card" style={{ gridColumn: "span 4" }}>
-                <div style={{ color: "#60a5fa", marginBottom: 10 }}>
+              <article key={t.name} className="card float testimonies-card">
+                <div className="testimonies-quote-icon">
                   <TbQuote size={22} aria-hidden="true" />
                 </div>
-                <p style={{ marginBottom: 18 }}>{t.text}</p>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <p className="testimonies-text">{t.text}</p>
+                <div className="testimonies-footer">
                   <strong>{t.name}</strong>
-                  <span aria-label={`${t.rating} out of 5 stars`} style={{ display: "inline-flex", gap: 2, color: "#f59e0b" }}>
+                  <span aria-label={`${t.rating} out of 5 stars`} className="testimonies-stars">
                     {Array.from({ length: 5 }).map((_, i) =>
                       i < t.rating ? <TbStarFilled key={i} /> : <TbStar key={i} />
                     )}
@@ -80,4 +99,4 @@ const Testimonies: React.FC = () => {
   );
 };
 
-export default Testimonies;
+export default Testimonials;

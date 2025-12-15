@@ -1,0 +1,9 @@
+/* ========================================
+   APP SIDEBAR STYLES
+   ======================================== */
+
+.sidebar-divider {
+  height: 1px;
+  background: var(--sidebar-border);
+  margin: 0 18px;
+}

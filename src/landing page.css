@@ -115,10 +115,11 @@ body{margin:0;font-family:Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif;backg
 }
 .title{
 	font-size:clamp(40px, 8vw, 84px);
+	color: #edecec;
 	line-height:1.02; margin:0 0 .2rem; letter-spacing:-.02em; font-weight:800;
 }
 .subtitle{
-	margin:0 0 1.6rem; font-size:clamp(14px, 2.2vw, 18px); color:var(--muted)
+	margin:0 0 1.6rem; font-size:clamp(14px, 2.2vw, 18px); color:#f87474
 }
 
 /* Search bar */

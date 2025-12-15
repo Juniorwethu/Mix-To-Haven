@@ -64,6 +64,7 @@ const LandingPage: React.FC = () => {
 						style={{
 							margin: "12px 0 24px",
 							fontSize: "clamp(14px, 2.4vw, 18px)",
+							color: "#fffafaff",
 							opacity: 0.95,
 						}}
 					>
@@ -80,7 +81,7 @@ const LandingPage: React.FC = () => {
 							textDecoration: "none",
 							fontWeight: 700,
 							background: "linear-gradient(135deg,#2f80ed,#56ccf2)",
-							color: "#061a33",
+							color: "#e8e9ebff",
 							boxShadow: "0 10px 24px rgba(47,128,237,.35)",
 							border: "0",
 						}}

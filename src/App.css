@@ -1,8 +1,13 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Ensure body and html don't interfere */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 .logo {
@@ -33,120 +38,30 @@
   }
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  padding: 1.5rem;
-  margin: 1rem;
-  max-width: 350px;
-  width: 100%;
-  transition: box-shadow 0.2s;
+/* Responsive scaling */
+html {
+  font-size: 16px;
 }
-
-.card img, .card svg {
-  width: 100%;
-  height: auto;
-  max-height: 180px;
-  object-fit: contain;
-}
-
-.card-title {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.card-content {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
 @media (max-width: 1200px) {
-  .main-content {
-    gap: 1rem;
-  }
-  .card {
-    max-width: 300px;
+  html {
+    font-size: 15px;
   }
 }
-
 @media (max-width: 768px) {
-  .container {
-    padding: 0.5rem;
-  }
-  .main-content {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1rem;
-  }
-  .card {
-    max-width: 100%;
-    margin: 0.5rem 0;
-    padding: 1rem;
-  }
-  .header, .footer {
-    padding: 0.5rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  body, html {
+  html {
     font-size: 14px;
   }
-  .container {
-    padding: 0.25rem;
-  }
-  .card {
-    padding: 0.75rem;
-    border-radius: 8px;
-  }
-  .card-title {
-    font-size: 1rem;
-  }
-  .card-content {
-    font-size: 0.9rem;
+  .logo {
+    height: 4em;
+    padding: 1em;
   }
 }
-
-/* Images, icons, and fonts scale with viewport */
-img, svg {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-body, html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-family: 'Inter', Arial, sans-serif;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 1rem;
-}
-
-.header, .footer {
-  width: 100%;
-  text-align: center;
-  padding: 1rem 0;
-}
-
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.read-the-docs {
-  color: #888;
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+  .logo {
+    height: 2.5em;
+    padding: 0.5em;
+  }
 }

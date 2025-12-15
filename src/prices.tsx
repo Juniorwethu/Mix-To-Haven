@@ -1,5 +1,6 @@
 import React from "react";
 import "./about us.css";
+import { TbCheck, TbPhone, TbMail } from "react-icons/tb";
 
 const Prices: React.FC = () => {
 	// price list as card data
@@ -106,102 +107,107 @@ const Prices: React.FC = () => {
 		},
 	];
 
+	// Duplicate items for seamless looping
+	const carouselItems = [...items, ...items];
+
 	return (
-		<div className="about-root" style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-			<section className="hero" style={{ display: "grid", placeItems: "center", minHeight: "60vh" }}>
+		<div className="price-root">
+			<section className="hero price-hero">
 				<div className="container">
-					<h1>Pricing</h1>
-					<p>Transparent packages for every occasion.</p>
+					<h1 className="price-hero-title">Pricing</h1>
+					<p className="price-hero-subtitle">Transparent packages for every occasion.</p>
 				</div>
 				<svg className="hero-curve" viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true">
 					<path d="M0,120 C300,220 1140,0 1440,90 L1440,180 L0,180 Z" fill="white" />
 				</svg>
 			</section>
-
+			{/* Carousel styles */}
+			<style>{`
+        .price-carousel {
+          overflow: hidden;
+          -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+        }
+        .price-carousel:hover .price-carousel__container {
+          animation-play-state: paused;
+        }
+        .price-carousel__container {
+          display: flex;
+          width: max-content;
+          animation: marquee 36s linear infinite;
+        }
+        .price-carousel__slide {
+          flex-shrink: 0;
+          width: 340px; /* Fixed width for consistent speed calculation */
+          padding-left: 16px;
+          box-sizing: content-box;
+        }
+        @keyframes marquee {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
 			{/* Price List */}
-			<section className="section" style={{ paddingTop: 0 }}>
+			<section className="section price-list-section">
 				<div className="container">
-					<h2>Price List</h2>
-					<div
-						style={{
-							display: "grid",
-							gap: 18,
-							gridTemplateColumns: "repeat(auto-fill,minmax(240px,1fr))",
-							marginTop: 16,
-						}}
-					>
-						{items.map((i) => (
-							<article
-								key={i.name}
-								className="card float"
-								style={{
-									padding: "18px 18px 16px",
-									borderRadius: 18,
-									display: "flex",
-									flexDirection: "column",
-									gap: 8,
-									minHeight: 140,
-								}}
-							>
-								<h3 style={{ margin: 0, fontSize: "15px" }}>{i.name}</h3>
-								<p style={{ margin: "4px 0 0", fontWeight: 600 }}>{i.price}</p>
-								{i.note && (
-									<p style={{ margin: "6px 0 0", fontSize: "12px", opacity: 0.75, lineHeight: 1.4 }}>{i.note}</p>
-								)}
-							</article>
-						))}
+					<h2 className="price-section-title">Price List</h2>
+					<div className="price-carousel">
+						<div className="price-carousel__container">
+							{carouselItems.map((i, index) => (
+								<div className="price-carousel__slide" key={`${i.name}-${index}`}>
+									<article className="card float price-package-card">
+										<h3 className="price-package-name">{i.name}</h3>
+										<p className="price-package-price">{i.price}</p>
+										{i.note && (
+											<p className="price-package-note">{i.note}</p>
+										)}
+									</article>
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
 			</section>
-
 			{/* Packages */}
-			<section className="section">
+			<section className="section price-packages-section">
 				<div className="container">
-					<h2>Packages</h2>
-					<div style={{ display: "grid", gap: 24, marginTop: 12 }}>
-						{packages.map((p, idx) => (
+					<h2 className="price-section-title">Packages</h2>
+					<div className="price-packages-grid">
+						{packages.map((p) => (
 							<article
 								key={p.title}
-								className="card float"
-								style={{
-									padding: "28px 28px 24px",
-									borderRadius: 22,
-									background:
-										idx === 0
-											? "linear-gradient(180deg,#ffffff,#eef4ff)"
-											: idx === 1
-												? "linear-gradient(180deg,#ffffff,#fdf2f8)"
-												: "linear-gradient(180deg,#ffffff,#fef9e6)",
-								}}
+								className="card float price-package-detail-card"
 							>
-								<h3 style={{ marginTop: 0 }}>{p.title}</h3>
-								<p style={{ margin: "4px 0 0", fontSize: 13, fontWeight: 500 }}>
-									{p.ideal} · {p.guests}
+								<h3>{p.title}</h3>
+								<p className="price-package-ideal">
+									<strong>Ideal for:</strong> {p.ideal}
 								</p>
-								<p style={{ margin: "6px 0 12px", fontWeight: 700 }}>{p.price}</p>
-								<div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
+								<p className="price-package-guests">
+									<strong>Guests:</strong> {p.guests}
+								</p>
+								<p className="price-package-amount">{p.price}</p>
+								
+								<strong className="price-package-includes-title">What's Included:</strong>
+								<ul className="price-package-includes-list">
 									{p.includes.map((inc) => (
-										<span
-											key={inc}
-											style={{
-												background: "rgba(0,0,0,.06)",
-												padding: "6px 10px",
-												borderRadius: 14,
-												fontSize: 12,
-												whiteSpace: "nowrap",
-											}}
-										>
-											{inc}
-										</span>
+										<li key={inc} className="price-package-includes-item">
+											<TbCheck size={18} className="price-package-includes-icon" />
+											<span>{inc}</span>
+										</li>
 									))}
-								</div>
-								{p.extra && <p style={{ margin: "0 0 16px", fontSize: 12, opacity: 0.7 }}>{p.extra}</p>}
+								</ul>
+
+								{p.extra && <p className="price-package-extra">{p.extra}</p>}
 
 								{/* Menus (only if defined) */}
 								{p.menuSignature && (
-									<div style={{ marginBottom: 14 }}>
-										<strong style={{ fontSize: 13 }}>Signature Cocktails:</strong>
-										<ul style={{ margin: "4px 0 0", paddingLeft: 16, fontSize: 12, lineHeight: 1.5 }}>
+									<div className="price-package-menu-section">
+										<strong className="price-package-menu-title">Signature Cocktails:</strong>
+										<ul className="price-package-menu-list">
 											{p.menuSignature.map((m) => (
 												<li key={m}>{m}</li>
 											))}
@@ -209,9 +215,9 @@ const Prices: React.FC = () => {
 									</div>
 								)}
 								{p.menuClassic && (
-									<div style={{ marginBottom: 14 }}>
-										<strong style={{ fontSize: 13 }}>Unlimited Classic Options:</strong>
-										<ul style={{ margin: "4px 0 0", paddingLeft: 16, fontSize: 12, lineHeight: 1.5 }}>
+									<div className="price-package-menu-section">
+										<strong className="price-package-menu-title">Unlimited Classic Options:</strong>
+										<ul className="price-package-menu-list">
 											{p.menuClassic.map((m) => (
 												<li key={m}>{m}</li>
 											))}
@@ -219,9 +225,9 @@ const Prices: React.FC = () => {
 									</div>
 								)}
 								{p.menuMocktail && (
-									<div style={{ marginBottom: 14 }}>
-										<strong style={{ fontSize: 13 }}>Mocktails:</strong>
-										<ul style={{ margin: "4px 0 0", paddingLeft: 16, fontSize: 12, lineHeight: 1.5 }}>
+									<div className="price-package-menu-section">
+										<strong className="price-package-menu-title">Mocktails:</strong>
+										<ul className="price-package-menu-list">
 											{p.menuMocktail.map((m) => (
 												<li key={m}>{m}</li>
 											))}
@@ -229,9 +235,9 @@ const Prices: React.FC = () => {
 									</div>
 								)}
 								{(p as any).welcomeDrinks && (
-									<div>
-										<strong style={{ fontSize: 13 }}>Welcome Drinks:</strong>
-										<ul style={{ margin: "4px 0 0", paddingLeft: 16, fontSize: 12, lineHeight: 1.5 }}>
+									<div className="price-package-menu-section">
+										<strong className="price-package-menu-title">Welcome Drinks:</strong>
+										<ul className="price-package-menu-list">
 											{(p as any).welcomeDrinks.map((m: string) => (
 												<li key={m}>{m}</li>
 											))}
@@ -241,57 +247,62 @@ const Prices: React.FC = () => {
 							</article>
 						))}
 					</div>
-					<p style={{ marginTop: 24, fontSize: 12, opacity: 0.7 }}>
+					<p className="price-packages-note">
 						Need a fully bespoke package? Reach out for a custom proposal tailored to your event scale and vision.
 					</p>
 				</div>
 			</section>
-
 			{/* Please Note */}
-			<section className="section light" style={{ paddingTop: 0 }}>
-				<div className="container">
-					<h2>Please Note</h2>
-					<article
-						className="card float"
-						style={{
-							padding: 22,
-							borderRadius: 18,
-							background: "#0b0e13",
-							color: "#ffffff",
-							border: "1px solid rgba(255,255,255,.08)",
-							boxShadow: "0 12px 32px rgba(0,0,0,.5)",
-						}}
-					>
-						<ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.6, color: "rgba(255,255,255,.92)" }}>
-							<li>
-								All packages include high‑quality plastic cups as standard. Glassware is not included and can be added upon
-								request at an additional cost.
-							</li>
-							<li>
-								The cocktail, mocktail, and drink menus shown are examples only—clients are welcome to customise their own
-								selections.
-							</li>
-							<li>
-								Final pricing may vary based on guest count, travel distance, menu customisation, and any additional services
-								requested.
-							</li>
-						</ul>
-						<div style={{ marginTop: 14 }}>
-							<strong style={{ color: "#fff" }}>Contact:</strong>{" "}
-							<a href="tel:+27787983991" style={{ color: "#fff", textDecoration: "underline", textUnderlineOffset: 3 }}>
-								078 798 3991
-							</a>{" "}
-							·{" "}
-							<a
-								href="mailto:Mix.To.Haven@outlook.com"
-								style={{ color: "#fff", textDecoration: "underline", textUnderlineOffset: 3 }}
-							>
-								Mix.To.Haven@outlook.com
-							</a>
-						</div>
-					</article>
-				</div>
-			</section>
+			<section className="section light price-note-section">
+  <div className="container">
+    <h2 className="price-section-title">Please Note</h2>
+
+    <article className="card float price-note-card">
+      <div className="price-note-content">
+        <div className="price-note-list-wrapper">
+          <ul className="price-note-list">
+            <li>
+              All packages include high‑quality plastic cups as standard. Glassware is optional and can be added on request
+              (quoted separately).
+            </li>
+            <li>
+              The cocktail, mocktail, and drink menus shown are examples — clients are welcome to customise selections.
+            </li>
+            <li>
+              Final pricing may vary based on guest count, travel distance, menu customisation, and additional services requested.
+            </li>
+          </ul>
+        </div>
+
+        <div className="price-contact-wrapper">
+          <div className="price-contact-card">
+            <div className="price-contact-title">Contact</div>
+
+            <a
+              href="tel:+27787983991"
+              className="price-contact-link"
+            >
+              <TbPhone size={18} aria-hidden="true" /> 078 798 3991
+            </a>
+
+            <div className="price-contact-spacer" />
+
+            <a
+              href="mailto:Mix.To.Haven@outlook.com"
+              className="price-contact-link"
+            >
+              <TbMail size={18} aria-hidden="true" /> Mix.To.Haven@outlook.com
+            </a>
+          </div>
+
+          <div className="price-contact-note">
+            Available for quotes & bookings — WhatsApp preferred.
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
 		</div>
 	);
 };
