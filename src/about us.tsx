@@ -1,16 +1,81 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./about-us.css";
+import Shuffle from "./components/Shuffle";
 import { TbUsers, TbMapPin, TbSparkles, TbAdjustmentsAlt, TbLeaf } from "react-icons/tb";
 
 const AboutUs: React.FC = () => {
+	const glassButtonStyle = {
+		display: "inline-flex",
+		alignItems: "center",
+		justifyContent: "center",
+		padding: "12px 28px",
+		borderRadius: 999,
+		textDecoration: "none",
+		fontWeight: 700,
+		color: "#fff",
+		background: "radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 70%)",
+		border: "2px solid rgba(255,255,255,0.3)",
+		backdropFilter: "blur(12px)",
+		WebkitBackdropFilter: "blur(12px)",
+		boxShadow: "0 8px 20px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -1px 1px rgba(0,0,0,0.3)",
+		transition: "transform 0.2s ease, box-shadow 0.2s ease",
+	};
+
+	useEffect(() => {
+		const scrollers = document.querySelectorAll(".scroller");
+
+		if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+			addAnimation();
+		}
+
+		function addAnimation() {
+			scrollers.forEach((scroller) => {
+				scroller.setAttribute("data-animated", "true");
+
+				const scrollerInner = scroller.querySelector(".scroller__inner");
+				if (scrollerInner) {
+					const scrollerContent = Array.from(scrollerInner.children);
+
+					scrollerContent.forEach((item) => {
+						const duplicatedItem = item.cloneNode(true) as HTMLElement;
+						duplicatedItem.setAttribute("aria-hidden", "true");
+						scrollerInner.appendChild(duplicatedItem);
+					});
+				}
+			});
+		}
+	}, []);
+
+	const handleMouseOver = (e: React.MouseEvent<HTMLAnchorElement>) => {
+		e.currentTarget.style.transform = "scale(1.05) translateY(-2px)";
+		e.currentTarget.style.boxShadow = "0 12px 28px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -1px 1px rgba(0,0,0,0.3)";
+	};
+
+	const handleMouseOut = (e: React.MouseEvent<HTMLAnchorElement>) => {
+		e.currentTarget.style.transform = "scale(1) translateY(0)";
+		e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -1px 1px rgba(0,0,0,0.3)";
+	};
+
 	return (
-		<div className="about-root">
+		<div className="about-root" style={{ background: '#f0f2f5' }}>
 			{/* Hero Section: Text + Image */}
 			<section className="about-hero">
-				<div className="about-hero-text">
-					<h1 style={{ fontSize: "2.6rem", fontWeight: 700, marginBottom: 18 }}>
-						Not Just your Regular Mobile Bar
-					</h1>
+				<div className="about-hero-text" style={{
+					background: "#f0f2f5",
+					color: "#222",
+					padding: "32px 36px",
+					borderRadius: "20px",
+					border: "1px solid #e5e5e5",
+				}}>
+					<Shuffle
+						text="Not Just your Regular Mobile Bar"
+						tag="h1"
+						style={{ fontSize: "2.6rem", fontWeight: 700, marginBottom: 18 }}
+						shuffleDirection="right"
+						duration={0.5}
+						stagger={0.05}
+						triggerOnHover={false}
+					/>
 					<p style={{ fontSize: "1.15rem", color: "#444", marginBottom: 28 }}>
 						Mobile bars and crafted drink experiences for events of every size. Mix to Haven brings hospitality, style, and unforgettable drinks to your celebration.
 					</p>
@@ -18,24 +83,16 @@ const AboutUs: React.FC = () => {
 						From weddings and corporate events to private parties and pop-ups, our team delivers seamless service, creative menus, and a bar setup that fits your vision. 
 						We believe every event deserves a unique touch—whether you want classic cocktails, vibrant mocktails, or a custom drinks menu.
 					</p>
-					<div style={{ display: "flex", gap: 16 }}>
-						<a href="/contact" className="btn" style={{
-							background: "#222",
-							color: "#fff",
-							borderRadius: 24,
-							padding: "12px 28px",
-							fontWeight: 600,
-							textDecoration: "none"
-						}}>Learn More</a>
-						<a href="/services" className="btn" style={{
-							background: "#f5f5f5",
-							color: "#222",
-							borderRadius: 24,
-						 padding: "12px 28px",
-							fontWeight: 600,
-							textDecoration: "none",
-							border: "1px solid #e5e5e5"
-						}}>Our Services</a>
+					<div style={{ display: "flex", gap: 16, flexWrap: 'wrap' }}>
+						<a href="/services" className="btn" style={glassButtonStyle} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+							Our Services
+						</a>
+						<a href="/prices" className="btn" style={glassButtonStyle} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+							See Prices
+						</a>
+						<a href="/contact" className="btn" style={glassButtonStyle} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+							Contact Us
+						</a>
 					</div>
 				</div>
 				<div style={{
@@ -163,28 +220,23 @@ const AboutUs: React.FC = () => {
 				padding: "48px 0",
 				borderBottom: "1px solid #f0f0ed"
 			}}>
-				<div className="container" style={{
-					maxWidth: 1100,
-					margin: "0 auto",
-					display: "flex",
-					justifyContent: "center",
-					gap: 32,
-					flexWrap: "wrap"
-				}}>
-					{["/drinks.1.jpg", "/drinks.2.jpg", "/drinks.3.jpg"].map((drink, index) => (
-						<img
-							key={index}
-							src={drink}
-							alt={`Crafted drink ${index + 1}`}
-							style={{
-								width: 220,
-								height: 220,
-								borderRadius: "50%",
-								objectFit: "cover",
-								boxShadow: "0 4px 24px rgba(0,0,0,0.08)"
-							}}
-						/>
-					))}
+				<div className="scroller">
+					<div className="scroller__inner">
+						{["/drinks.1.jpg", "/drinks.2.jpg", "/drinks.3.jpg", "/drink.4.jpg", "/drink.5.jpg"].map((drink, index) => (
+							<img
+								key={index}
+								src={drink}
+								alt={`Crafted drink ${index + 1}`}
+								style={{
+									width: 220,
+									height: 220,
+									borderRadius: "50%",
+									objectFit: "cover",
+									boxShadow: "0 4px 24px rgba(0,0,0,0.08)"
+								}}
+							/>
+						))}
+					</div>
 				</div>
 			</section>
 

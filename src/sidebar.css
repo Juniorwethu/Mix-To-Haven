@@ -32,8 +32,8 @@
   flex-direction:column;
   transition:width .2s ease, box-shadow .2s, transform .3s ease;
   box-shadow: var(--sidebar-shadow);
-  border-top-right-radius: 18px;
-  border-bottom-right-radius: 18px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .sidebar[data-state="collapsed"]{ width:var(--sidebar-collapsed) }
 
