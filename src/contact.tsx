@@ -1,5 +1,5 @@
 import React from "react";
-import "./about us.css";
+import "./about-us.css";
 import "./contact.css";
 import { TbMapPin, TbMail, TbPhone, TbBrandInstagram } from "react-icons/tb";
 
@@ -26,7 +26,7 @@ const Contact: React.FC = () => {
 					</div>
 
 					{/* Column 2: Map */}
-					<div>
+					<div className="contact-map-card">
 						<h2 className="contact-map-title">Find Us</h2>
 						<iframe
 							title="Google Maps location of Mix to Haven"

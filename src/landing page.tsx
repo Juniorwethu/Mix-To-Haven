@@ -33,7 +33,7 @@ function LandingPage() {
 					aria-labelledby="hero-title"
 					style={{
 						pointerEvents: "auto",
-						background: "rgba(0,0,0,0.55)",
+						background: "linear-gradient(145deg, rgba(10,14,26,0.78), rgba(26,31,46,0.78))",
 						backdropFilter: "blur(12px)",
 						WebkitBackdropFilter: "blur(12px)",
 						color: "#fff",
@@ -41,7 +41,7 @@ function LandingPage() {
 						padding: "32px 36px",
 						borderRadius: "20px",
 						boxShadow: "0 20px 60px rgba(0,0,0,.5)",
-						border: "1px solid rgba(255,255,255,.12)",
+						border: "1px solid rgba(212,175,55,.30)",
 						maxWidth: 820,
 						margin: 16,
 					}}
@@ -61,7 +61,7 @@ function LandingPage() {
 						style={{
 							margin: "12px 0 24px",
 							fontSize: "clamp(14px, 2.4vw, 18px)",
-							color: "#fffafaff",
+							color: "rgba(255,255,255,0.88)",
 							opacity: 0.95,
 						}}
 					>
@@ -77,21 +77,21 @@ function LandingPage() {
 							borderRadius: 999,
 							textDecoration: "none",
 							fontWeight: 700,
-							color: "#fff",
-							background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 70%)",
-							border: "2px solid rgba(255,255,255,0.3)",
+							color: "#0a0e1a",
+							background: "linear-gradient(135deg, #d4af37 0%, #c9a43a 100%)",
+							border: "1px solid rgba(212,175,55,.65)",
 							backdropFilter: "blur(12px)",
 							WebkitBackdropFilter: "blur(12px)",
-							boxShadow: "0 8px 20px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -1px 1px rgba(0,0,0,0.3)",
+							boxShadow: "0 10px 30px rgba(212,175,55,0.34)",
 							transition: "transform 0.2s ease, box-shadow 0.2s ease",
 						}}
 						onMouseOver={(e) => {
 							e.currentTarget.style.transform = "scale(1.05) translateY(-2px)";
-							e.currentTarget.style.boxShadow = "0 12px 28px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -1px 1px rgba(0,0,0,0.3)";
+							e.currentTarget.style.boxShadow = "0 14px 34px rgba(212,175,55,0.42)";
 						}}
 						onMouseOut={(e) => {
 							e.currentTarget.style.transform = "scale(1) translateY(0)";
-							e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -1px 1px rgba(0,0,0,0.3)";
+							e.currentTarget.style.boxShadow = "0 10px 30px rgba(212,175,55,0.34)";
 						}}
 					>
 						Discover Our Services

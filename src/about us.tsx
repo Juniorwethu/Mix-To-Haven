@@ -4,23 +4,6 @@ import Shuffle from "./components/Shuffle";
 import { TbUsers, TbMapPin, TbSparkles, TbAdjustmentsAlt, TbLeaf } from "react-icons/tb";
 
 const AboutUs: React.FC = () => {
-	const glassButtonStyle = {
-		display: "inline-flex",
-		alignItems: "center",
-		justifyContent: "center",
-		padding: "12px 28px",
-		borderRadius: 999,
-		textDecoration: "none",
-		fontWeight: 700,
-		color: "#fff",
-		background: "radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 70%)",
-		border: "2px solid rgba(255,255,255,0.3)",
-		backdropFilter: "blur(12px)",
-		WebkitBackdropFilter: "blur(12px)",
-		boxShadow: "0 8px 20px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -1px 1px rgba(0,0,0,0.3)",
-		transition: "transform 0.2s ease, box-shadow 0.2s ease",
-	};
-
 	useEffect(() => {
 		const scrollers = document.querySelectorAll(".scroller");
 
@@ -46,251 +29,186 @@ const AboutUs: React.FC = () => {
 		}
 	}, []);
 
-	const handleMouseOver = (e: React.MouseEvent<HTMLAnchorElement>) => {
-		e.currentTarget.style.transform = "scale(1.05) translateY(-2px)";
-		e.currentTarget.style.boxShadow = "0 12px 28px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -1px 1px rgba(0,0,0,0.3)";
-	};
-
-	const handleMouseOut = (e: React.MouseEvent<HTMLAnchorElement>) => {
-		e.currentTarget.style.transform = "scale(1) translateY(0)";
-		e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -1px 1px rgba(0,0,0,0.3)";
-	};
-
 	return (
-		<div className="about-root" style={{ background: '#f0f2f5' }}>
-			{/* Hero Section: Text + Image */}
+		<div className="about-root">
+			{/* Hero Section */}
 			<section className="about-hero">
-				<div className="about-hero-text" style={{
-					background: "#f0f2f5",
-					color: "#222",
-					padding: "32px 36px",
-					borderRadius: "20px",
-					border: "1px solid #e5e5e5",
-				}}>
-					<Shuffle
-						text="Not Just your Regular Mobile Bar"
-						tag="h1"
-						style={{ fontSize: "2.6rem", fontWeight: 700, marginBottom: 18 }}
-						shuffleDirection="right"
-						duration={0.5}
-						stagger={0.05}
-						triggerOnHover={false}
-					/>
-					<p style={{ fontSize: "1.15rem", color: "#444", marginBottom: 28 }}>
-						Mobile bars and crafted drink experiences for events of every size. Mix to Haven brings hospitality, style, and unforgettable drinks to your celebration.
-					</p>
-					<p style={{ fontSize: "1rem", color: "#666", marginBottom: 18 }}>
-						From weddings and corporate events to private parties and pop-ups, our team delivers seamless service, creative menus, and a bar setup that fits your vision. 
-						We believe every event deserves a unique touch—whether you want classic cocktails, vibrant mocktails, or a custom drinks menu.
-					</p>
-					<div style={{ display: "flex", gap: 16, flexWrap: 'wrap' }}>
-						<a href="/services" className="btn" style={glassButtonStyle} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-							Our Services
-						</a>
-						<a href="/prices" className="btn" style={glassButtonStyle} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-							See Prices
-						</a>
-						<a href="/contact" className="btn" style={glassButtonStyle} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-							Contact Us
-						</a>
+				<div className="about-hero-content">
+					<div className="about-hero-text">
+						<div className="about-hero-badge">Premium Mobile Bar Service</div>
+						<Shuffle
+							text="Elevating Every Celebration"
+							tag="h1"
+							className="about-hero-title"
+							shuffleDirection="right"
+							duration={0.5}
+							stagger={0.05}
+							triggerOnHover={false}
+						/>
+						<p className="about-hero-subtitle">
+							Mix to Haven brings sophistication, style, and unforgettable cocktail experiences to events across Gauteng. 
+							From intimate gatherings to grand celebrations, we craft moments worth remembering.
+						</p>
+						<div className="about-hero-buttons">
+							<a href="/services" className="btn btn-primary">
+								Explore Services
+							</a>
+							<a href="/contact" className="btn btn-secondary">
+								Book Your Event
+							</a>
+						</div>
 					</div>
-				</div>
-				<div style={{
-					flex: "1 1 340px",
-					maxWidth: 480,
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center"
-				}}>
-					<img
-						src="/Bar.2.jpeg"
-						alt="Mix to Haven Bar - Better Together"
-						style={{
-							width: "100%",
-							maxWidth: 400,
-							borderRadius: "24px",
-							objectFit: "cover",
-							boxShadow: "0 8px 32px rgba(0,0,0,0.10)"
-						}}
-					/>
-				</div>
-			</section>
-
-			{/* Features Section */}
-			<section style={{
-				background: "#fafaf7",
-				padding: "56px 0 32px",
-				borderBottom: "1px solid #f0f0ed"
-			}}>
-				<div className="container" style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
-					<h2 style={{ fontSize: "2rem", fontWeight: 700, marginBottom: 10 }}>We have the Best Features for You</h2>
-					<p style={{ color: "#666", marginBottom: 32 }}>
-						Mix to Haven is your partner for effortless, memorable events. We offer flexible packages, expert staff, and a commitment to quality.
-					</p>
-					<div style={{
-						display: "grid",
-						gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-						gap: 28,
-						justifyContent: "center"
-					}}>
-						<article className="card float" style={{ padding: 28, borderRadius: 18, background: "#fff", boxShadow: "0 2px 12px #f0f0ed" }}>
-							<div className="icon-badge" style={{ marginBottom: 10 }}>
-								<TbUsers size={28} strokeWidth={1.25} aria-hidden="true" />
-							</div>
-							<strong>Friendly Professionals</strong>
-							<p style={{ margin: "8px 0 0", color: "#444" }}>Personable team with event expertise.</p>
-						</article>
-						<article className="card float" style={{ padding: 28, borderRadius: 18, background: "#fff", boxShadow: "0 2px 12px #f0f0ed" }}>
-							<div className="icon-badge" style={{ marginBottom: 10 }}>
-								<TbMapPin size={28} strokeWidth={1.25} aria-hidden="true" />
-							</div>
-							<strong>Mobile Anywhere</strong>
-							<p style={{ margin: "8px 0 0", color: "#444" }}>Bars that travel to your venue.</p>
-						</article>
-						<article className="card float" style={{ padding: 28, borderRadius: 18, background: "#fff", boxShadow: "0 2px 12px #f0f0ed" }}>
-							<div className="icon-badge" style={{ marginBottom: 10 }}>
-								<TbSparkles size={28} strokeWidth={1.25} aria-hidden="true" />
-							</div>
-							<strong>Premium Drinks</strong>
-							<p style={{ margin: "8px 0 0", color: "#444" }}>Quality ingredients and presentation.</p>
-						</article>
-						<article className="card float" style={{ padding: 28, borderRadius: 18, background: "#fff", boxShadow: "0 2px 12px #f0f0ed" }}>
-							<div className="icon-badge" style={{ marginBottom: 10 }}>
-								<TbAdjustmentsAlt size={28} strokeWidth={1.25} aria-hidden="true" />
-							</div>
-							<strong>Customisable Experiences</strong>
-							<p style={{ margin: "8px 0 0", color: "#444" }}>Menus, bar design, and service style tailored to you.</p>
-						</article>
-						<article className="card float" style={{ padding: 28, borderRadius: 18, background: "#fff", boxShadow: "0 2px 12px #f0f0ed" }}>
-							<div className="icon-badge" style={{ marginBottom: 10 }}>
-								<TbLeaf size={28} strokeWidth={1.25} aria-hidden="true" />
-							</div>
-							<strong>Premium Ingredients</strong>
-							<p style={{ margin: "8px 0 0", color: "#444" }}>Quality spirits, fresh produce, and house-made mixers.</p>
-						</article>
+					<div className="about-hero-image-wrapper">
+						<div className="about-hero-image-glow"></div>
+						<img
+							src="/Bar.2.jpeg"
+							alt="Mix to Haven - Elegant Mobile Bar"
+							className="about-hero-image"
+						/>
 					</div>
 				</div>
 			</section>
 
-			{/* Extra Info Cards Section */}
-			<section style={{
-				background: "#fff",
-				padding: "48px 0 32px",
-				borderBottom: "1px solid #f0f0ed"
-			}}>
-				<div className="container" style={{ maxWidth: 1100, margin: "0 auto" }}>
-					<h2 style={{ fontSize: "1.7rem", fontWeight: 700, marginBottom: 18, textAlign: "center" }}>Why Mix to Haven?</h2>
-					<div style={{
-						display: "grid",
-						gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-						gap: 28,
-						justifyContent: "center"
-					}}>
-						<article className="card float" style={{ padding: 24, borderRadius: 18, background: "#fafaf7", boxShadow: "0 2px 12px #f0f0ed" }}>
-							<strong style={{ fontSize: "1.1rem" }}>Flexible Packages</strong>
-							<p style={{ margin: "8px 0 0", color: "#444" }}>
-								Choose from essential, premium, or deluxe options—or request a custom package for your event size and style.
-							</p>
-						</article>
-						<article className="card float" style={{ padding: 24, borderRadius: 18, background: "#fafaf7", boxShadow: "0 2px 12px #f0f0ed" }}>
-							<strong style={{ fontSize: "1.1rem" }}>Creative Menus</strong>
-							<p style={{ margin: "8px 0 0", color: "#444" }}>
-								Signature cocktails, classic favorites, and non-alcoholic options—all tailored to your preferences.
-							</p>
-						</article>
-						<article className="card float" style={{ padding: 24, borderRadius: 18, background: "#fafaf7", boxShadow: "0 2px 12px #f0f0ed" }}>
-							<strong style={{ fontSize: "1.1rem" }}>Effortless Hosting</strong>
-							<p style={{ margin: "8px 0 0", color: "#444" }}>
-								We handle setup, service, and cleanup—so you can relax and enjoy your guests.
-							</p>
-						</article>
-						<article className="card float" style={{ padding: 24, borderRadius: 18, background: "#fafaf7", boxShadow: "0 2px 12px #f0f0ed" }}>
-							<strong style={{ fontSize: "1.1rem" }}>Trusted by Clients</strong>
-							<p style={{ margin: "8px 0 0", color: "#444" }}>
-								Our team is recommended by couples, brands, and planners for professionalism and memorable experiences.
-							</p>
-						</article>
+			{/* Features Grid */}
+			<section className="about-features">
+				<div className="about-container">
+					<div className="about-section-header">
+						<h2 className="about-section-title">Why Choose Mix to Haven</h2>
+						<p className="about-section-subtitle">
+							Experience the perfect blend of professionalism, creativity, and exceptional service
+						</p>
+					</div>
+					
+					<div className="about-features-grid">
+						<div className="about-feature-card">
+							<div className="about-feature-icon">
+								<TbUsers size={32} strokeWidth={1.5} />
+							</div>
+							<h3>Expert Bartenders</h3>
+							<p>Professional mixologists with years of experience creating memorable drink experiences</p>
+						</div>
+						
+						<div className="about-feature-card">
+							<div className="about-feature-icon">
+								<TbMapPin size={32} strokeWidth={1.5} />
+							</div>
+							<h3>Mobile Service</h3>
+							<p>We bring the bar to you—anywhere in Gauteng, with complete setup and breakdown</p>
+						</div>
+						
+						<div className="about-feature-card">
+							<div className="about-feature-icon">
+								<TbSparkles size={32} strokeWidth={1.5} />
+							</div>
+							<h3>Premium Quality</h3>
+							<p>Top-shelf spirits, fresh ingredients, and artisan presentation in every drink</p>
+						</div>
+						
+						<div className="about-feature-card">
+							<div className="about-feature-icon">
+								<TbAdjustmentsAlt size={32} strokeWidth={1.5} />
+							</div>
+							<h3>Custom Menus</h3>
+							<p>Tailored cocktail selections designed to match your event's theme and style</p>
+						</div>
+						
+						<div className="about-feature-card">
+							<div className="about-feature-icon">
+								<TbLeaf size={32} strokeWidth={1.5} />
+							</div>
+							<h3>Sustainable Practices</h3>
+							<p>Eco-friendly operations with locally sourced ingredients and minimal waste</p>
+						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* Drink Images Section */}
-			<section style={{
-				background: "#fafaf7",
-				padding: "48px 0",
-				borderBottom: "1px solid #f0f0ed"
-			}}>
-				<div className="scroller">
+			{/* Drink Showcase */}
+			<section className="about-showcase">
+				<div className="scroller" data-speed="slow">
 					<div className="scroller__inner">
 						{["/drinks.1.jpg", "/drinks.2.jpg", "/drinks.3.jpg", "/drink.4.jpg", "/drink.5.jpg"].map((drink, index) => (
-							<img
-								key={index}
-								src={drink}
-								alt={`Crafted drink ${index + 1}`}
-								style={{
-									width: 220,
-									height: 220,
-									borderRadius: "50%",
-									objectFit: "cover",
-									boxShadow: "0 4px 24px rgba(0,0,0,0.08)"
-								}}
-							/>
+							<div key={index} className="about-drink-card">
+								<img
+									src={drink}
+									alt={`Signature cocktail ${index + 1}`}
+									className="about-drink-image"
+								/>
+							</div>
 						))}
 					</div>
 				</div>
 			</section>
 
-			{/* Story Section */}
-			<section style={{
-				background: "#fff",
-				padding: "56px 0 32px",
-				borderBottom: "1px solid #f0f0ed"
-			}}>
-				<div className="container" style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
-					<h2 style={{ fontSize: "2rem", fontWeight: 700, marginBottom: 10 }}>Our Story</h2>
-					<p style={{ color: "#444", fontSize: "1.15rem", lineHeight: 1.7 }}>
-						Mix to Haven began with a simple idea: great drinks and warm hospitality turn good events into great ones.
-						What started as a passion project has grown into a full‑service mobile bar team trusted by couples, brands,
-						and planners. We partner with you to shape a bar experience that reflects your taste—whether that’s a classic
-						cocktail hour, a zero‑proof menu, or an immersive tasting. Our goal is to make hosting effortless and memorable,
-						so you can focus on your guests while we handle the details behind the bar.
-					</p>
-					<p style={{ color: "#666", fontSize: "1rem", marginTop: 18 }}>
-						We’re passionate about elevating every event, big or small. Our bartenders bring energy and expertise, our menus are crafted for every palate, and our service is designed to make your celebration seamless.
-					</p>
+			{/* Our Story */}
+			<section className="about-story">
+				<div className="about-container">
+					<div className="about-story-content">
+						<h2 className="about-section-title">Our Story</h2>
+						<div className="about-story-text">
+							<p>
+								Mix to Haven was born from a passion for exceptional hospitality and the belief that 
+								every celebration deserves an extraordinary bar experience. What began as a small 
+								operation has grown into Gauteng's premier mobile bar service, trusted by couples, 
+								corporations, and event planners alike.
+							</p>
+							<p>
+								We pride ourselves on more than just mixing drinks—we craft experiences. Each cocktail 
+								is a work of art, each interaction is genuine, and every event becomes a reflection 
+								of our commitment to excellence. Whether you're planning an intimate wedding reception 
+								or a corporate gala, we bring the same level of dedication and artistry.
+							</p>
+							<p>
+								Our team combines years of bartending expertise with a genuine love for what we do. 
+								From classic cocktails to innovative creations, from full bar service to specialty 
+								drink stations, we handle every detail so you can focus on celebrating with your guests.
+							</p>
+						</div>
+					</div>
 				</div>
 			</section>
 
-			{/* Coverage Section */}
-			<section style={{
-				background: "#fafaf7",
-				padding: "40px 0 24px",
-				borderBottom: "1px solid #f0f0ed"
-			}}>
-				<div className="container" style={{ textAlign: "center" }}>
-					<p style={{ margin: 0, color: "#888" }}>We’re mobile across</p>
-					<h3 style={{ marginTop: 6, fontSize: "1.5rem", fontWeight: 600 }}>Gauteng</h3>
+			{/* Service Highlights */}
+			<section className="about-highlights">
+				<div className="about-container">
+					<div className="about-highlights-grid">
+						<div className="about-highlight-card">
+							<div className="about-highlight-number">01</div>
+							<h3>Consultation</h3>
+							<p>We start by understanding your vision, guest count, preferences, and event style</p>
+						</div>
+						
+						<div className="about-highlight-card">
+							<div className="about-highlight-number">02</div>
+							<h3>Custom Planning</h3>
+							<p>Receive a tailored menu and service package designed specifically for your event</p>
+						</div>
+						
+						<div className="about-highlight-card">
+							<div className="about-highlight-number">03</div>
+							<h3>Seamless Service</h3>
+							<p>On the day, we arrive early, set up completely, and deliver flawless service</p>
+						</div>
+						
+						<div className="about-highlight-card">
+							<div className="about-highlight-number">04</div>
+							<h3>Clean Exit</h3>
+							<p>After the last toast, we handle all breakdown and cleanup—no stress for you</p>
+						</div>
+					</div>
 				</div>
 			</section>
 
 			{/* CTA Section */}
-			<section className="cta-band" style={{
-				background: "#fff",
-				padding: "48px 0"
-			}}>
-				<div className="container" style={{ textAlign: "center" }}>
-					<h2 style={{ fontWeight: 700, fontSize: "2rem" }}>Ready to Craft Your Unforgettable Event?</h2>
-					<a className="btn" href="/contact" style={{
-						display: "inline-block",
-						marginTop: 18,
-						background: "#222",
-					 color: "#fff",
-						borderRadius: 24,
-						padding: "14px 36px",
-						fontWeight: 600,
-						textDecoration: "none",
-						fontSize: "1.1rem"
-					}}>Get a Quote</a>
+			<section className="about-cta">
+				<div className="about-container">
+					<div className="about-cta-content">
+						<h2>Ready to Elevate Your Event?</h2>
+						<p>Let's create an unforgettable bar experience tailored to your celebration</p>
+						<a href="/contact" className="btn btn-cta">
+							Get Your Free Quote
+						</a>
+					</div>
 				</div>
 			</section>
 		</div>

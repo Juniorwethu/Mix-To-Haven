@@ -1,5 +1,5 @@
 import React from "react";
-import "./about us.css";
+import "./about-us.css";
 import "./testimonies.css";
 import { TbQuote, TbStarFilled, TbStar } from "react-icons/tb";
 

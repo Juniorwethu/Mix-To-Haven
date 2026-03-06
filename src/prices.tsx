@@ -1,5 +1,5 @@
 import React from "react";
-import "./about us.css";
+import "./about-us.css";
 import { TbCheck, TbPhone, TbMail } from "react-icons/tb";
 
 const Prices: React.FC = () => {

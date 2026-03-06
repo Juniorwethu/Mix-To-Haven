@@ -1,5 +1,5 @@
 import React from "react";
-import "./about us.css";
+import "./about-us.css";
 import "./services.css";
 import {
   TbGlassFull,
@@ -49,7 +49,7 @@ const Services: React.FC = () => {
 
           {/* arrow graph */}
           <div className="services-process-rail">
-            <div className="process-step">
+            <div className="services-process-step">
               <div className="icon-badge sm">
                 <TbMessage2 size={18} strokeWidth={1.25} aria-hidden="true" />
               </div>
@@ -57,7 +57,7 @@ const Services: React.FC = () => {
               <p>We learn about your event, venue, guest count, and vision.</p>
             </div>
 
-            <div className="process-step">
+            <div className="services-process-step">
               <div className="icon-badge sm">
                 <TbListCheck size={18} strokeWidth={1.25} aria-hidden="true" />
               </div>
@@ -65,7 +65,7 @@ const Services: React.FC = () => {
               <p>Tailored cocktails, mocktails, taps, and spirits to your theme.</p>
             </div>
 
-            <div className="process-step">
+            <div className="services-process-step">
               <div className="icon-badge sm">
                 <TbPalette size={18} strokeWidth={1.25} aria-hidden="true" />
               </div>
@@ -73,7 +73,7 @@ const Services: React.FC = () => {
               <p>Stylish bars, premium glassware, and refined details.</p>
             </div>
 
-            <div className="process-step">
+            <div className="services-process-step">
               <div className="icon-badge sm">
                 <TbSparkles size={18} strokeWidth={1.25} aria-hidden="true" />
               </div>
@@ -81,7 +81,7 @@ const Services: React.FC = () => {
               <p>Friendly professionals deliver seamless service.</p>
             </div>
 
-            <div className="process-step">
+            <div className="services-process-step">
               <div className="icon-badge sm">
                 <TbBoom size={18} strokeWidth={1.25} aria-hidden="true" />
               </div>
@@ -374,7 +374,7 @@ const Services: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="cta-band services-gallery-section">
+      <section className="services-cta-band">
         <div className="container services-cta-container">
           <h2 className="services-section-title">Ready to chat about your event?</h2>
           <p className="services-cta-text">
